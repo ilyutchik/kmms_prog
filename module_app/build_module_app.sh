@@ -1,9 +1,17 @@
-CPP_FILES="io.cpp sortings.cpp main.cpp"
-APP=example
+MAIN=main
+EXE=example
+BIN_DIR=bin
 
-if [ -f $APP ]; then rm $APP
+CPP_FILES="io.cpp sortings.cpp main.cpp"
+
+if [ ! -d $BIN_DIR ]; then mkdir $BIN_DIR
 fi
 
-g++ $CPP_FILES -o $APP
+if [ -f $BIN_DIR/$EXE ]; then rm $BIN_DIR/$EXE
+fi
 
-./$APP
+g++ $CHARSET $CPP_FILES -o "$BIN_DIR/$EXE" || exit 1
+
+./$BIN_DIR/$EXE
+
+
